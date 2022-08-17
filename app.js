@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const passport = require("passport");
 const passportLocal = require("passport-local");
+
 const MongoDBStore = require("connect-mongo")(session);
 
 const User = require("./models/user");
@@ -156,6 +157,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("Serving on port 3000");
 });
